@@ -130,6 +130,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     min-height: calc(100vh - 100px);
+    align-items: start;
   }
 
   /* LEFT PANEL */
@@ -648,6 +649,211 @@
     outline: none;
     cursor: pointer;
   }
+
+  /* Stats & Insights */
+  .stats-panel {
+    background: rgba(255,255,255,0.4);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 24px;
+  }
+
+  .stats-panel h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 14px;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .stat-item {
+    background: var(--cream);
+    border-radius: 6px;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+  }
+
+  .stat-label {
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.5;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .stat-value {
+    font-family: 'Caveat', cursive;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .stat-value.highlight-amber { color: var(--amber); }
+  .stat-value.highlight-blue { color: var(--blue); }
+  .stat-value.highlight-sage { color: var(--sage); }
+
+  /* Bottom panel: library + study next */
+  .bottom-panels {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    padding: 32px 40px 40px 96px;
+    border-top: 2px solid var(--line);
+    grid-column: 1 / -1;
+  }
+
+  @media (max-width: 768px) {
+    .bottom-panels {
+      grid-template-columns: 1fr;
+      padding: 24px 16px 32px 48px;
+    }
+  }
+
+  .sub-panel-title {
+    font-family: 'Fraunces', serif;
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 16px;
+  }
+
+  /* Library */
+  .library-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 260px;
+    overflow-y: auto;
+  }
+
+  .library-item {
+    background: rgba(255,255,255,0.5);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 10px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    transition: border-color 0.2s;
+    cursor: default;
+  }
+
+  .library-item:hover { border-color: var(--amber); }
+
+  .library-item-title {
+    font-family: 'Caveat', cursive;
+    font-size: 17px;
+    font-weight: 600;
+    flex: 1;
+  }
+
+  .library-item-meta {
+    font-size: 10px;
+    opacity: 0.4;
+    letter-spacing: 0.05em;
+    margin-left: 10px;
+    white-space: nowrap;
+  }
+
+  .library-item-del {
+    background: none;
+    border: none;
+    color: var(--rust);
+    cursor: pointer;
+    opacity: 0.4;
+    font-size: 14px;
+    padding: 0 4px;
+    transition: opacity 0.2s;
+    margin-left: 6px;
+  }
+  .library-item-del:hover { opacity: 1; }
+
+  .library-empty {
+    font-size: 12px;
+    opacity: 0.35;
+    font-style: italic;
+    padding: 8px 0;
+  }
+
+  /* Study next */
+  .study-next-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .study-card {
+    background: rgba(255,255,255,0.5);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 12px 16px;
+    animation: fadeIn 0.4s ease;
+  }
+
+  .study-card-topic {
+    font-family: 'Caveat', cursive;
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--blue);
+    margin-bottom: 4px;
+  }
+
+  .study-card-reason {
+    font-size: 11px;
+    opacity: 0.55;
+    line-height: 1.5;
+  }
+
+  .btn-study-now {
+    margin-top: 8px;
+    background: none;
+    border: 1px solid var(--blue);
+    color: var(--blue);
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-study-now:hover { background: var(--blue); color: white; }
+
+  .btn-refresh-suggestions {
+    background: none;
+    border: 1px solid var(--line);
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    cursor: pointer;
+    color: var(--ink);
+    transition: all 0.2s;
+    margin-bottom: 14px;
+    letter-spacing: 0.05em;
+  }
+  .btn-refresh-suggestions:hover { border-color: var(--amber); color: var(--amber); }
+  .btn-refresh-suggestions:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  .study-loading {
+    font-size: 12px;
+    opacity: 0.45;
+    font-style: italic;
+    display: none;
+  }
+  .study-loading.visible { display: block; }
 </style>
 </head>
 <body>
@@ -701,6 +907,11 @@
       <div id="styleTags"></div>
     </div>
 
+    <div class="stats-panel" id="statsPanel" style="display:none">
+      <h4>📊 Session Insights</h4>
+      <div class="stats-grid" id="statsGrid"></div>
+    </div>
+
     <div class="topic-section">
       <label class="field-label" for="topicInput">What topic should I take notes on?</label>
       <input type="text" class="topic-input" id="topicInput" placeholder="e.g. Photosynthesis, World War II, Calculus..." />
@@ -722,7 +933,10 @@
       <div class="notes-output" id="notesOutput">
         <div class="notes-header">
           <div class="notes-title-display" id="notesTitleDisplay">Notes</div>
-          <button class="btn-copy" onclick="copyNotes()">Copy ↗</button>
+          <div style="display:flex;gap:8px">
+            <button class="btn-copy" onclick="saveToLibrary()">Save ✦</button>
+            <button class="btn-copy" onclick="copyNotes()">Copy ↗</button>
+          </div>
         </div>
         <div class="notes-content" id="notesContent"></div>
       </div>
@@ -739,6 +953,26 @@
   </div>
 </main>
 
+<div class="bottom-panels">
+  <!-- Note Library -->
+  <div>
+    <div class="sub-panel-title">03 — My Notes Library</div>
+    <div class="library-list" id="libraryList">
+      <div class="library-empty" id="libraryEmpty">No notes saved yet — hit "Save ✦" after generating notes</div>
+    </div>
+  </div>
+
+  <!-- What to Study Next -->
+  <div>
+    <div class="sub-panel-title">04 — What to Study Next</div>
+    <button class="btn-refresh-suggestions" id="refreshSuggestionsBtn" onclick="fetchStudySuggestions()">↻ Suggest topics</button>
+    <div class="study-loading" id="studyLoading">✦ Thinking based on your library...</div>
+    <div class="study-next-list" id="studyNextList">
+      <div class="library-empty" id="studyEmpty">Save some notes to your library first, then ask for suggestions!</div>
+    </div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script>
@@ -746,11 +980,7 @@ const API_PROXY_URL = 'https://api.anthropic.com/v1/messages';
 let uploadedImages = []; // {dataUrl, base64, mediaType}
 let styleProfile = null;
 
-// Load saved key
-window.addEventListener('load', () => {
-  const saved = localStorage.getItem('mimicnotes_key');
-  if (saved) document.getElementById('apiKeyInput').value = saved;
-});
+// Load saved key — handled in bottom load listener
 
 function saveKey() {
   const key = document.getElementById('apiKeyInput').value.trim();
@@ -799,9 +1029,13 @@ function handleFilesFromList(files) {
       uploadedImages.push({ dataUrl, base64, mediaType });
       renderPhotoGrid();
       updateSteps();
-      // Auto-analyze style when photos are added
-      if (uploadedImages.length > 0 && !styleProfile) {
-        setTimeout(analyzeStyle, 500);
+      // Re-analyze style whenever photos change (reset existing profile)
+      styleProfile = null;
+      document.getElementById('styleProfile').classList.remove('visible');
+      document.getElementById('step2').className = 'step';
+      if (getKey()) {
+        clearTimeout(window._analyzeDebounce);
+        window._analyzeDebounce = setTimeout(analyzeStyle, 600);
       }
     };
     reader.readAsDataURL(file);
@@ -824,7 +1058,17 @@ function removePhoto(index) {
   if (uploadedImages.length === 0) {
     styleProfile = null;
     document.getElementById('styleProfile').classList.remove('visible');
+    document.getElementById('statsPanel').style.display = 'none';
     document.getElementById('step2').className = 'step';
+  } else {
+    // Re-analyze with remaining photos
+    styleProfile = null;
+    document.getElementById('styleProfile').classList.remove('visible');
+    document.getElementById('step2').className = 'step';
+    if (getKey()) {
+      clearTimeout(window._analyzeDebounce);
+      window._analyzeDebounce = setTimeout(analyzeStyle, 600);
+    }
   }
 }
 
@@ -909,6 +1153,7 @@ function displayStyleProfile() {
   }
 
   document.getElementById('styleProfile').classList.add('visible');
+  updateStatsPanel();
 }
 
 // Generate personalized notes
@@ -1079,6 +1324,8 @@ function renderNotes(topic, markdown) {
     .replace(/<p><br><\/p>/g, '');
 
   document.getElementById('notesContent').innerHTML = html;
+  // Refresh stats in case library count changed
+  updateStatsPanel();
 }
 
 // API call
@@ -1140,6 +1387,170 @@ function copyNotes() {
   const content = document.getElementById('notesContent').innerText;
   navigator.clipboard.writeText(content).then(() => showToast('Copied to clipboard ✓'));
 }
+
+// ─── Stats Panel ────────────────────────────────────────────────────────────
+function updateStatsPanel() {
+  if (!styleProfile) return;
+  const panel = document.getElementById('statsPanel');
+  const grid = document.getElementById('statsGrid');
+  const lib = getLibrary();
+
+  const statDefs = [
+    { label: 'Photos uploaded', value: uploadedImages.length, cls: '' },
+    { label: 'Notes saved', value: lib.length, cls: 'highlight-blue' },
+    { label: 'Note style', value: (styleProfile.noteStyle || '—').replace(/-/g, ' '), cls: 'highlight-amber' },
+    { label: 'Detail level', value: (styleProfile.detailLevel || '—').replace(/-/g, ' '), cls: '' },
+    { label: 'Density', value: styleProfile.writingDensity || '—', cls: '' },
+    { label: 'Analogies', value: styleProfile.analogyUsage || '—', cls: 'highlight-sage' },
+  ];
+
+  grid.innerHTML = statDefs.map(s => `
+    <div class="stat-item">
+      <span class="stat-label">${s.label}</span>
+      <span class="stat-value ${s.cls}">${s.value}</span>
+    </div>
+  `).join('');
+
+  panel.style.display = 'block';
+}
+
+// ─── Library ─────────────────────────────────────────────────────────────────
+function getLibrary() {
+  try { return JSON.parse(localStorage.getItem('mimicnotes_library') || '[]'); }
+  catch { return []; }
+}
+
+function saveLibrary(lib) {
+  localStorage.setItem('mimicnotes_library', JSON.stringify(lib));
+}
+
+function saveToLibrary() {
+  const topic = document.getElementById('notesTitleDisplay').textContent;
+  const content = document.getElementById('notesContent').innerHTML;
+  if (!topic || topic === 'Notes' || !content) {
+    showToast('⚠ Generate notes first before saving');
+    return;
+  }
+  const lib = getLibrary();
+  // Avoid duplicate topics (update instead)
+  const existingIdx = lib.findIndex(n => n.topic.toLowerCase() === topic.toLowerCase());
+  const entry = { topic, content, savedAt: new Date().toISOString() };
+  if (existingIdx >= 0) { lib[existingIdx] = entry; }
+  else { lib.unshift(entry); }
+  saveLibrary(lib);
+  renderLibrary();
+  updateStatsPanel();
+  showToast(`"${topic}" saved to library ✓`);
+}
+
+function deleteFromLibrary(index) {
+  const lib = getLibrary();
+  lib.splice(index, 1);
+  saveLibrary(lib);
+  renderLibrary();
+  updateStatsPanel();
+}
+
+function renderLibrary() {
+  const lib = getLibrary();
+  const list = document.getElementById('libraryList');
+  const empty = document.getElementById('libraryEmpty');
+
+  if (lib.length === 0) {
+    list.innerHTML = '<div class="library-empty" id="libraryEmpty">No notes saved yet — hit "Save ✦" after generating notes</div>';
+    return;
+  }
+
+  list.innerHTML = lib.map((n, i) => {
+    const date = new Date(n.savedAt);
+    const dateStr = date.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+    return `
+      <div class="library-item">
+        <span class="library-item-title">${escapeHtml(n.topic)}</span>
+        <span class="library-item-meta">${dateStr}</span>
+        <button class="library-item-del" onclick="deleteFromLibrary(${i})" title="Remove">✕</button>
+      </div>
+    `;
+  }).join('');
+}
+
+function escapeHtml(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ─── What to Study Next ──────────────────────────────────────────────────────
+async function fetchStudySuggestions() {
+  const lib = getLibrary();
+  if (lib.length === 0) {
+    showToast('⚠ Save some notes first, then ask for suggestions');
+    return;
+  }
+  if (!getKey()) {
+    showToast('⚠ Enter your API key first');
+    return;
+  }
+
+  const btn = document.getElementById('refreshSuggestionsBtn');
+  const loading = document.getElementById('studyLoading');
+  const list = document.getElementById('studyNextList');
+
+  btn.disabled = true;
+  loading.classList.add('visible');
+  list.innerHTML = '';
+
+  const topicsList = lib.map(n => `- ${n.topic}`).join('\n');
+
+  try {
+    const response = await callClaude([{
+      type: 'text',
+      text: `A student has already taken notes on these topics:
+${topicsList}
+
+Based on typical academic progressions, prerequisites, and related areas of study, suggest exactly 3 topics they should study next. For each suggestion, give a short reason (1–2 sentences) explaining why it's a logical next step.
+
+Return ONLY a JSON array like:
+[
+  { "topic": "Topic Name", "reason": "Why this is a logical next step..." },
+  { "topic": "Topic Name", "reason": "..." },
+  { "topic": "Topic Name", "reason": "..." }
+]`
+    }]);
+
+    const text = response.content[0].text;
+    const jsonMatch = text.match(/\[[\s\S]*\]/);
+    if (!jsonMatch) throw new Error('No JSON found');
+    const suggestions = JSON.parse(jsonMatch[0]);
+
+    list.innerHTML = suggestions.map(s => `
+      <div class="study-card">
+        <div class="study-card-topic">${escapeHtml(s.topic)}</div>
+        <div class="study-card-reason">${escapeHtml(s.reason)}</div>
+        <button class="btn-study-now" onclick="studyNow(${JSON.stringify(escapeHtml(s.topic))})">Study this →</button>
+      </div>
+    `).join('');
+
+    document.getElementById('studyEmpty') && (document.getElementById('studyEmpty').style.display = 'none');
+  } catch(e) {
+    console.error('Study suggestions error:', e);
+    list.innerHTML = '<div class="library-empty">Could not load suggestions — check your API key</div>';
+  }
+
+  loading.classList.remove('visible');
+  btn.disabled = false;
+}
+
+function studyNow(topic) {
+  document.getElementById('topicInput').value = topic;
+  document.getElementById('topicInput').scrollIntoView({ behavior: 'smooth' });
+  showToast(`Topic set to "${topic}" — hit Generate!`);
+}
+
+// On page load, render library
+window.addEventListener('load', () => {
+  const saved = localStorage.getItem('mimicnotes_key');
+  if (saved) document.getElementById('apiKeyInput').value = saved;
+  renderLibrary();
+});
 
 function showToast(msg) {
   const toast = document.getElementById('toast');
